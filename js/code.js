@@ -1,4 +1,4 @@
-
+//Prueba commit
 $(document).ready(init);//ejecuta la función init en cuanto el documento ha sido cargado
 
 function init()
