@@ -13,7 +13,7 @@ function init()
 	$("#tabla_alimento").load("tabla/tabla_alimento.php");
 }
 
-
+/*SUCURSAL*/
 function nuevaSucursal()
 {
 $("#modal_nueva_sucursal").modal();
@@ -30,7 +30,6 @@ $.post("control/insert_sucursal.php",
 			alert(data);
 			$("#modal_nueva_sucursal").modal("hide");
 		});
-}
 
 function deleteSucursal(id_sucursal)
 {
@@ -47,4 +46,76 @@ function deleteSucursal(id_sucursal)
 			});
 	}	
 }
+
+/*MESA*/
+function nuevaMesa()
+{
+$("#modal_nueva_mesa").modal();
+}
+function insertMesa()
+{
+var nombre =$("#txt_numero_mesa_nueva").prop("value");
+$.post("control/insert_mesa.php",
+		{
+			capacidad:capacidad,
+			estatus:estatus
+		},
+		function(data){
+			alert(data);
+			$("#modal_nueva_mesa").modal("hide");
+		});
+}
+
+function deleteMesa(id_mesa)
+{
+	if(confirm("¿Seguro que deseas eliminar este registro?"))
+	{
+		$.post("control/delete_mesa.php",
+			{
+				id_mesa:id_mesa
+			},
+			function(data){
+				alert(data);
+				$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
+				$("#tabla_mesa").load("tabla/tabla_mesa.php");
+			});
+	}	
+}
+/*EMPLEADO*/
+function nuevoEmpleado()
+{
+$("#modal_nuevo_empleado").modal();
+}
+function insertEmpleado()
+{
+var nombre =$("#txt_nombre_empleado_nuevo").prop("value");
+$.post("control/insert_empleado.php",
+		{
+			nombre:nombre,
+			telefono:telefono.
+			email:email
+		},
+		function(data){
+			alert(data);
+			$("#modal_nuevo_empleado").modal("hide");
+		});
+}
+
+function deleteMesa(id_empleado)
+{
+	if(confirm("¿Seguro que deseas eliminar este registro?"))
+	{
+		$.post("control/delete_empleado.php",
+			{
+				id_empleado:id_empleado
+			},
+			function(data){
+				alert(data);
+				$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
+				$("#tabla_empleado").load("tabla/tabla_empleado.php");
+			});
+	}	
+}
+
+
 
