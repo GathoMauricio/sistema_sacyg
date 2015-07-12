@@ -1,4 +1,6 @@
 <?php session_start() ?>
+<?php include "../control/conexion.php" ?>
+
 <?php 
 if(!isset($_SESSION['administrador']))
 {
@@ -73,7 +75,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 	<span class="glyphicon glyphicon-hand-up"></span>
 </a></center>
 <div class="titulo" id="sucursal">Sucursal 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick = "nuevaSucursal()";><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick = "nuevaSucursal();"><span class="glyphicon glyphicon-plus" ></span></button>
 </div>
 <div id="tabla_sucursal" class="tabla"></div>
 <hr>
@@ -82,7 +84,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 	<span class="glyphicon glyphicon-hand-up"></span>
 </a></center>
 <div class="titulo" id="mesa">Mesa 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo"><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="showNuevaMesa();"><span class="glyphicon glyphicon-plus" ></span></button>
 </div>
 <div id="tabla_mesa" class="tabla"></div>
 <hr>
@@ -114,11 +116,8 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 
 <br><br>
 
-<<<<<<< HEAD
+<?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nueva_sucursal.php"; ?>
-=======
-<?php  include "modal/nueva_sucursal.php"; ?>
 
->>>>>>> origin/master
 </body>
 </html>

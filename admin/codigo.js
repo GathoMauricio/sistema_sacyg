@@ -3,9 +3,9 @@ function init()
 {
 	//LOAD AJAX
 	$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
-	$("#tabla_mesa").html("<center><img src='load.gif' width='200'></center>");
-	$("#tabla_empleado").html("<center><img src='load.gif' width='200'></center>");
-	$("#tabla_alimento").html("<center><img src='load.gif' width='200'></center>");
+	$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
+	$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
+	$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
 	//Cargando tablas
 	$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 	$("#tabla_mesa").load("tabla/tabla_mesa.php");
@@ -13,7 +13,7 @@ function init()
 	$("#tabla_alimento").load("tabla/tabla_alimento.php");
 }
 
-/*SUCURSAL*/
+//SUCURSAL
 function nuevaSucursal()
 {
 $("#modal_nueva_sucursal").modal();
@@ -30,7 +30,7 @@ $.post("control/insert_sucursal.php",
 			alert(data);
 			$("#modal_nueva_sucursal").modal("hide");
 		});
-
+}
 function deleteSucursal(id_sucursal)
 {
 	if(confirm("¿Seguro que deseas eliminar este registro?"))
@@ -47,11 +47,12 @@ function deleteSucursal(id_sucursal)
 	}	
 }
 
-/*MESA*/
-function nuevaMesa()
+//MESA
+function showNuevaMesa()
 {
 $("#modal_nueva_mesa").modal();
 }
+
 function insertMesa()
 {
 var nombre =$("#txt_numero_mesa_nueva").prop("value");
@@ -81,7 +82,7 @@ function deleteMesa(id_mesa)
 			});
 	}	
 }
-/*EMPLEADO*/
+//EMPLEADO
 function nuevoEmpleado()
 {
 $("#modal_nuevo_empleado").modal();
@@ -92,7 +93,7 @@ var nombre =$("#txt_nombre_empleado_nuevo").prop("value");
 $.post("control/insert_empleado.php",
 		{
 			nombre:nombre,
-			telefono:telefono.
+			telefono:telefono,
 			email:email
 		},
 		function(data){

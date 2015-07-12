@@ -1,4 +1,4 @@
-div class="modal fade" id="modal_nuevo_empleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modal_nuevo_empleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,4 +14,5 @@ div class="modal fade" id="modal_nuevo_empleado" tabindex="-1" role="dialog" ari
         <button type="button" class="btn btn-primary" onclick="insertSucursal();">Guardar Cambios</button>
       </div>
   </div>
+</div>
 </div>
