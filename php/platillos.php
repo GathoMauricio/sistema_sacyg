@@ -1,10 +1,11 @@
 <?php include "../control/conexion.php" ?>
+<?php session_start() ?>
 <?php 
 $consulta="SELECT * FROM tipo_alimento";
 $datos=mysqli_query($conexion,$consulta);
 ?>
 <div id="catalogo_alimentos">
-	<center><h2>Menú</h2></center>
+	<center><h2 style="color:white">Menú</h2></center>
 	
 <div id="accordion">
   <?php 
@@ -34,29 +35,50 @@ $datos=mysqli_query($conexion,$consulta);
   
 </div>
 </div>
+
 <div id="div_orden">
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="carrito">
 <center>
 
 	<h2>Arrastra aquí tu orden</h2>
+	<?php 
+	if(isset($_SESSION['id_cliente']))
+	{
+		echo '
+		<p class="bg-primary" style="width:70%">Bienvenid@ '.$_SESSION['nombre'].'</p>
+		<input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - its fast, free and secure!" onclick="generarPedido();">
+		';
+	}else
+	{
+		echo '
+		<p class="bg-danger" style="width:70%">Por favor 
+		<a href="#" onclick="showLogin();">inicia sesion</a> o 
+		<a href="#">registrate</a> 
+		antes de comenzar</p>
+		';
+	}
+
+	 ?>
+	
+	<br>
+	<label id="lbl_total">Total: $0.00</label>
+	
 	<div class="form-inline">
 		<label>Reservación</label>
-		<input type="Radio" class="form-control" name="tipo_servicio" id="rb_reservacion" onclick="tipoServicio(1);" checked>
+		<input type="Radio" class="form-control" name="tipo_servicio" id="rb_reservacion" onclick="tipoServicio(1);" required>
 		<label>Servicio a domicilio</label>
-		<input type="Radio" class="form-control" name="tipo_servicio" id="rb_domicilio" onclick="tipoServicio(2);">
+		<input type="Radio" class="form-control" name="tipo_servicio" id="rb_domicilio" onclick="tipoServicio(2);" required>
 	</div>
-	<div class="form" id="div_reservacion" style="float:right;text-align:left">
 
-		<label>Fecha</label><br>
-		<input type="date" class="form-control"><br>
-		<label>N° de personas</label><br>
-		<input type="number"  min="1" max="10" class="form-control" value="1"><br>
-		<label>Hora</label><br>
-		<input type="time" class="form-control"><br>
-	</div>
-	<div class="form-inline" id="div_domicilio" hidden>DOMICILIO</div>
+	<div class="form" id="div_tipo_servicio"></div>
+
+	
+
+
 </center>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="carrito">
+
 	
 	<input type="hidden" name="cmd" value="_cart">
 	<input type="hidden" name="upload" value="1">
@@ -64,10 +86,7 @@ $datos=mysqli_query($conexion,$consulta);
 	<input type="hidden" name="currency_code" value="MXN">
 	<input type="hidden" name="return" value="http://pagina de retorno">
 	<div id="div_lista"></div>
-	<center>
-		<input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" onclick="generarPedido();">
-		<br>
-		<label id="lbl_total">Total: $0.00</label>
-	</center>
 </form>
 </div>
+
+<?php include "modal_login.php" ?>

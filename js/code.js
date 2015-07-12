@@ -72,7 +72,31 @@ function tipoServicio(tipo)
 		$("#div_domicilio").fadeIn( "slow");
 	}
 }
+
 function generarPedido()
 {
 	alert("pedido");
+}
+function showLogin()
+{
+	$("#modal_login").modal();
+}
+function validaCliente()
+{
+	var usuario =$("#txt_usuario_login").prop("value");
+	var contrasena =$("#txt_contrasena_login").prop("value");
+	$("#modal_login").modal("hide");
+	$.post("control/valida_cliente.php",
+		{
+			usuario:usuario,
+			contrasena:contrasena
+		}
+		,function(data){
+			if(data >= 1)
+			{
+				cargarPlatillos();
+			}else{
+				alert("Datos incorrectos!!!");
+			}
+		});
 }
