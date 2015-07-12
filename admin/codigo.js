@@ -20,17 +20,32 @@ $("#modal_nueva_sucursal").modal();
 }
 function insertSucursal()
 {
-var nombre =$("#txt_nombre_sucursal_nueva").prop("value");
+var sucursal =$("#txt_nombre_sucursal_nueva").prop("value");
+var telefono =$("#txt_telefono_sucursal_nueva").prop("value");
+var mapa =$("#txt_mapa_sucursal_nueva").prop("value");
+var calle_numero =$("#txt_calle_numero_sucursal_nueva").prop("value");
+var colonia =$("#txt_colonia_sucursal_nueva").prop("value");
+var delegacion =$("#txt_delegacion_sucursal_nueva").prop("value");
+var cp =$("#txt_cp_sucursal_nueva").prop("value");
 $.post("control/insert_sucursal.php",
 		{
-			nombre:nombre,
-			direccion:direccion
+			sucursal:sucursal,
+			telefono:telefono,
+			mapa:mapa,
+			calle_numero:calle_numero,
+			colonia:colonia,
+			delegacion:delegacion,
+			cp:cp
+			
 		},
 		function(data){
 			alert(data);
 			$("#modal_nueva_sucursal").modal("hide");
 		});
 }
+
+
+
 function deleteSucursal(id_sucursal)
 {
 	if(confirm("¿Seguro que deseas eliminar este registro?"))
