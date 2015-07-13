@@ -43,9 +43,6 @@ $.post("control/insert_sucursal.php",
 			$("#modal_nueva_sucursal").modal("hide");
 		});
 }
-
-
-
 function deleteSucursal(id_sucursal)
 {
 	if(confirm("¿Seguro que deseas eliminar este registro?"))
@@ -70,11 +67,14 @@ $("#modal_nueva_mesa").modal();
 
 function insertMesa()
 {
-var nombre =$("#txt_numero_mesa_nueva").prop("value");
+var numero_mesa =$("#txt_numero_mesa_nueva").prop("value");
+var capacidad =$("#txt_capacidad_mesa_nueva").prop("value");
+var sucursal_mesa =$("#txt_sucursal_mesa").prop("value");
 $.post("control/insert_mesa.php",
 		{
+			numero_mesa:numero_mesa,
 			capacidad:capacidad,
-			estatus:estatus
+			sucursal_mesa:sucursal_mesa
 		},
 		function(data){
 			alert(data);
