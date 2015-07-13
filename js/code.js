@@ -138,3 +138,12 @@ function generarPedido()
 	}
 	
 }
+function pedirPosicion(pos)
+{
+   	$("#txt_latitud_pedido").prop("value",pos.coords.latitude);
+   	$("#txt_longitud_pedido").prop("value",pos.coords.longitude);
+}
+function geolocalizame()
+{
+navigator.geolocation.getCurrentPosition(pedirPosicion);
+}
