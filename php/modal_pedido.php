@@ -26,8 +26,8 @@ $datos=mysqli_query($conexion,$consulta);
            ?>
         </select>
         <label>Geolocalizacion</label>
-        <input type="text" class="form-control" id="txt_latitud_pedido" placeholder="Latitud" readonly><br>
-        <input type="text" class="form-control" id="txt_longitud_pedido" placeholder="Lomgitud" readonly><br>
+        <input type="text" class="form-control" id="txt_latitud_pedido" placeholder="Latitud" readonly="true" required><br>
+        <input type="text" class="form-control" id="txt_longitud_pedido" placeholder="Lomgitud" readonly="true" required><br>
         <a href="#" onclick="geolocalizame();" class="btn btn-primary"><span class="glyphicon glyphicon-globe"></span> Obtener mi ubicacion </a>
 
       </div>

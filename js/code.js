@@ -1,6 +1,6 @@
 //Prueba commit
 $(document).ready(init);//ejecuta la función init en cuanto el documento ha sido cargado
-
+var cont=0;
 function init()
 {
 	  $(".rslides").responsiveSlides();////SLIDESRESPONSIVE: le agrega propiedades al slider del inicio
@@ -58,7 +58,13 @@ function soltado(e,elemento)
 	//sumando precion		
 	total+=parseInt(precio);
 	//pintando el total en la etiqueta debajo del boton de paypal
-	$("#lbl_total").text("Total: $"+total);		
+	$("#lbl_total").text(total);	
+	//guardando productor como variables de sesion	
+	$.post("php/producto_sesion.php",{
+		id_alimento:elemento.draggable.prop("id")
+	},function(data){
+		cont=data;
+	});
 
 }
 function tipoServicio(tipo)
@@ -127,13 +133,36 @@ function generarPedido()
 			$("#modal_reservacion").modal();
 			alert("Es necesario llenar todos los campos!!!"); 
 		}else{
-			alert("OK Reservacion");
+
+			if(cont<=0)
+			{
+				alert("No hay productos");
+				document.getElementById("rb_reservacion").checked=false;
+				document.getElementById("rb_domicilio").checked=false;
+			}
+			else
+			{
+				var total=$("#lbl_total").text();
+				window.open("php/generar_pdf_reservacion.php?t="+total);
+			}
 		}
 
 	}else{
 		if(boolReservacion==false && boolDomicilio==true)
 		{
-			alert("Domicilio");
+			var latitud = $("#txt_latitud_pedido").prop("value");
+			var longitud = $("#txt_longitud_pedido").prop("value");
+
+			if(latitud.length<=0 || longitud.length<=0)
+			{
+				document.getElementById("rb_domicilio").checked=false;
+				alert("Es necesario llenar todos los campos!!!");
+				
+			}else{
+				alert("Ok pedido");
+				
+			}
+			
 		}
 	}
 	

@@ -1,4 +1,4 @@
-
+<?php date_default_timezone_set("Mexico/General"); ?>
 <!DOCTYPE html>
 <html>
 <head>

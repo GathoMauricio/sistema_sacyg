@@ -40,7 +40,7 @@ $datos=mysqli_query($conexion,$consulta);
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="carrito">
 <center>
-
+	
 	<h2>Arrastra aquí tu orden</h2>
 	<?php 
 	if(isset($_SESSION['id_cliente']))
