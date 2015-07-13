@@ -80,10 +80,7 @@ function tipoServicio(tipo)
 	}
 }
 
-function generarPedido()
-{
-	
-}
+
 function showLogin()
 {
 	$("#modal_login").modal();
@@ -110,7 +107,34 @@ function validaCliente()
 function cargarMesas(id_sucursal)
 {
 	$.post("php/carga_mesas.php",{id_sucursal:id_sucursal},function(data){
-		$("#txt_mesareservacion").html(data)
+		$("#txt_mesa_reservacion").html(data)
 	});
+	
+}
+
+function generarPedido()
+{
+	var boolReservacion=document.getElementById("rb_reservacion").checked;
+	var boolDomicilio=document.getElementById("rb_domicilio").checked;
+
+	if(boolReservacion==true && boolDomicilio==false)
+	{
+		//Si se seleciono reservacion validamos q los campos necesarios esten llenos
+		var fecha=$("#txt_fecha_reservacion").prop("value");
+		var hora=$("#txt_hora_reservacion").prop("value");
+		var mesa=$("#txt_mesa_reservacion").prop("value");
+		if(fecha.length<=0 || hora.length<=0 || mesa.length<=0){
+			$("#modal_reservacion").modal();
+			alert("Es necesario llenar todos los campos!!!"); 
+		}else{
+			alert("OK Reservacion");
+		}
+
+	}else{
+		if(boolReservacion==false && boolDomicilio==true)
+		{
+			alert("Domicilio");
+		}
+	}
 	
 }

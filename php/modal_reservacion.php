@@ -10,7 +10,7 @@ $datos=mysqli_query($conexion,$consulta);
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ingrese Los datos de su reservacion</h4>
+        <h4 class="modal-title" id="myModalLabel">Ingrese los datos de su reservacion</h4>
       </div>
       <div class="modal-body">
         <input type="text" id="id_cliente_reservacion" value="<?php echo $_SESSION['id_cliente']; ?>" hidden>
@@ -25,8 +25,12 @@ $datos=mysqli_query($conexion,$consulta);
             }
            ?>
         </select>
-        <label>Mesa</label>
-        <select class="form-control" id="txt_mesareservacion"></select>
+        <label>Mesas Disponibles</label>
+        <select class="form-control" id="txt_mesa_reservacion" required></select>
+        <label>Fecha</label>
+        <input type="date" class="form-control" id="txt_fecha_reservacion" required>
+        <label>Hora</label>
+        <input type="time" class="form-control" id="txt_hora_reservacion" required>
       </div>
       <div class="modal-footer">
         <center>
