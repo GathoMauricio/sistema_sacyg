@@ -17,7 +17,7 @@ $datos=mysqli_query($conexion,$consulta);
         <label>Cliente</label>
         <input type="text" class="form-control" value="<?php echo $_SESSION['nombre']; ?>" readonly>
         <label>Sucursal</label>
-        <select class="form-control" onchange="cargaMesas(this.value);">
+        <select class="form-control" id="txt_sucursal_reservacion" onchange="cargarMesas(this.value);">
           <?php 
             while($fila=mysqli_fetch_array($datos))
             {
@@ -25,6 +25,8 @@ $datos=mysqli_query($conexion,$consulta);
             }
            ?>
         </select>
+        <label>Mesa</label>
+        <select class="form-control" id="txt_mesareservacion"></select>
       </div>
       <div class="modal-footer">
         <center>

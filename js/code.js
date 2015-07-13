@@ -69,6 +69,7 @@ function tipoServicio(tipo)
 		$.post("php/modal_reservacion.php",{},function(data){
 			$("#div_tipo_servicio").html(data);
 			$("#modal_reservacion").modal();
+			cargarMesas($("#txt_sucursal_reservacion").prop("value"));
 		});
 	}else{
 		//pedido
@@ -106,7 +107,10 @@ function validaCliente()
 			}
 		});
 }
-function cargarMesas(id)
+function cargarMesas(id_sucursal)
 {
-	alert(id);
+	$.post("php/carga_mesas.php",{id_sucursal:id_sucursal},function(data){
+		$("#txt_mesareservacion").html(data)
+	});
+	
 }
