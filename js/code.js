@@ -65,17 +65,23 @@ function tipoServicio(tipo)
 {
 	if(tipo==1)
 	{
-		$("#div_domicilio").fadeOut( "slow");
-		$("#div_reservacion").fadeIn( "slow");
+		//reservacion
+		$.post("php/modal_reservacion.php",{},function(data){
+			$("#div_tipo_servicio").html(data);
+			$("#modal_reservacion").modal();
+		});
 	}else{
-		$("#div_reservacion").fadeOut( "slow");
-		$("#div_domicilio").fadeIn( "slow");
+		//pedido
+		$.post("php/modal_pedido.php",{},function(data){
+			$("#div_tipo_servicio").html(data);
+			$("#modal_pedido").modal();
+		});
 	}
 }
 
 function generarPedido()
 {
-	alert("pedido");
+	
 }
 function showLogin()
 {
@@ -99,4 +105,8 @@ function validaCliente()
 				alert("Datos incorrectos!!!");
 			}
 		});
+}
+function cargarMesas(id)
+{
+	alert(id);
 }
