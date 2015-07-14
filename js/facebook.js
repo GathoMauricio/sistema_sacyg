@@ -1,6 +1,6 @@
 $(function() {
 
-	var app_id = '455179211327146';
+	var app_id = '1482393692053796';
 	var scopes = 'email, user_friends';
 
 	var btn_login = '<a href="#" id="login" >'+
@@ -31,7 +31,7 @@ $(function() {
   	};
 
   	var statusChangeCallback = function(response, callback) {
-  		console.log(response);
+  		//console.log(response);
    		
     	if (response.status === 'connected') {
       		getFacebookData();
@@ -51,13 +51,13 @@ $(function() {
   		FB.api('/me', function(response) {
         if(response.name.length > 0)
         {
-          $.post("php/comprobar_mail.php",{
+          /*$.post("php/comprobar_mail.php",{
           email:response.email,
           nombre:response.name
           },function(data){
           //alert(data);
           //window.location="index.php";
-          });
+          });*/
         }
         
 	  		$('#login').after(div_session);
@@ -114,3 +114,35 @@ $(function() {
   	})
 
 })
+function Publicar(){
+       FB.ui(
+       {
+         method: 'feed',
+         name: 'Restaurantes SACYG',
+         link: 'http://sacygrestaurantes.com/',
+         caption: '',
+         description: 'Donde el estilo, el gusto y el buen comer se adueñan de ti.',
+         message: ''
+       },
+// Si quieres que salga una alerta
+       function(response) {
+         
+       }
+     );
+ }
+ function auto_publishPost() {
+                var publish = {
+                    method: 'stream.publish',
+                    message: 'is learning how to develop Facebook apps.',
+                    picture : 'http://www.takwing.idv.hk/facebook/demoapp_jssdk/img/logo.gif',
+                    link : 'http://www.takwing.idv.hk/facebook/demoapp_jssdk/',
+                    name: 'This is my demo Facebook application (JS SDK)!',
+                    caption: 'Caption of the Post',
+                    description: 'It is fun to write Facebook App!',
+                    actions : { name : 'Start Learning', link : 'http://www.takwing.idv.hk/tech/fb_dev/index.php'}
+                };
+ 
+                FB.api('/me/feed', 'POST', publish, function(response) {  
+                    alert(response);
+                });
+            }; 

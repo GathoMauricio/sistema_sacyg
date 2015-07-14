@@ -8,7 +8,7 @@
 
 </div>
 <div id="div_frase">
-<img src="img/slogan.jpg" style="width:100%;height:100%;">
+<img src="img/slogan.png" style="width:100%;height:100%;">
 </div>
 
 
