@@ -23,6 +23,14 @@ $datos=mysqli_query($conexion,$consulta);
            </select>
         </div>
       </div>
+      <div class="modal-body">
+        <label>Numero de mesa</label>
+        <input type="text" class="form-control" id="txt_numero_mesa_nueva"> 
+      </div>
+      <div class="modal-body">
+        <label>Capacidad</label>
+        <input type="text" class="form-control" id="txt_capacidad_mesa_nueva"> 
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" onclick="insertMesa();">Guardar Cambios</button>

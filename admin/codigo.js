@@ -45,7 +45,7 @@ $.post("control/insert_sucursal.php",
 }
 function deleteSucursal(id_sucursal)
 {
-	if(confirm("¿Seguro que deseas eliminar este registro?"))
+	if(confirm("¿Seguro que deseas eliminar esta sucursal?"))
 	{
 		$.post("control/delete_sucursal.php",
 			{
@@ -84,7 +84,7 @@ $.post("control/insert_mesa.php",
 
 function deleteMesa(id_mesa)
 {
-	if(confirm("¿Seguro que deseas eliminar este registro?"))
+	if(confirm("¿Seguro que deseas eliminar esta mesa?"))
 	{
 		$.post("control/delete_mesa.php",
 			{
@@ -105,11 +105,31 @@ $("#modal_nuevo_empleado").modal();
 function insertEmpleado()
 {
 var nombre =$("#txt_nombre_empleado_nuevo").prop("value");
+var ap_paterno =$("#txt_apaterno_empleado_nuevo").prop("value");
+var ap_materno =$("#txt_amaterno_empleado_nuevo").prop("value");
+var fecha_nacimiento =$("#txt_fecnac_empleado_nuevo").prop("value");
+var telefono =$("#txt_telefono_empleado_nuevo").prop("value");
+var email =$("#txt_email_empleado_nuevo").prop("value");
+var calle_numero =$("#txt_calle_numero_empleado_nuevo").prop("value");
+var colonia =$("#txt_colonia_empleado_nuevo").prop("value");
+var municipio =$("#txt_municipio_empleado_nuevo").prop("value");
+var cp =$("#txt_cp_empleado_nuevo").prop("value");
+var empleado_usuario =$("#txt_empleado_usuario").prop("value");
+var empleado_sucursal =$("#txt_empleado_sucursal").prop("value");
 $.post("control/insert_empleado.php",
 		{
 			nombre:nombre,
+			ap_paterno:ap_paterno,
+			ap_materno:ap_materno,
+			fecha_nacimiento:fecha_nacimiento,
 			telefono:telefono,
-			email:email
+			email:email,
+			calle_numero:calle_numero,
+			colonia:colonia,
+			municipio:municipio,
+			cp:cp,
+			empleado_usuario:empleado_usuario,
+			empleado_sucursal:empleado_sucursal
 		},
 		function(data){
 			alert(data);
@@ -117,7 +137,7 @@ $.post("control/insert_empleado.php",
 		});
 }
 
-function deleteMesa(id_empleado)
+function deleteEmpleado(id_empleado)
 {
 	if(confirm("¿Seguro que deseas eliminar este registro?"))
 	{

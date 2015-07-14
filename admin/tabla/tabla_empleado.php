@@ -30,7 +30,7 @@ echo '<tr class="active">
 <button class="btn btn-warning" title="Actualizar">
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
-<button class="btn btn-danger" title="Eliminar">
+<button class="btn btn-danger" id ="'.$fila['id_empleado'].'" onclick="deleteEmpleado(this.id)" title="Eliminar">
 <span class="glyphicon glyphicon-trash"></span>
 </button>
 </td></tr>';
