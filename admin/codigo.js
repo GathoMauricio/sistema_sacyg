@@ -39,8 +39,10 @@ $.post("control/insert_sucursal.php",
 			
 		},
 		function(data){
-			alert(data);
+			//alert(data);
 			$("#modal_nueva_sucursal").modal("hide");
+			$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 		});
 }
 function deleteSucursal(id_sucursal)
@@ -52,13 +54,50 @@ function deleteSucursal(id_sucursal)
 				id_sucursal:id_sucursal
 			},
 			function(data){
-				alert(data);
+				//alert(data);
 				$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
 				$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 			});
 	}	
 }
+function showUpdateSucursal(id_sucursal)
+{	//mandamos llamar a get_sucursal para q llene todo apartir del id
+	$.post("modal/get_sucursal.php",{id_sucursal:id_sucursal},function(data){
+		//ya q les puso valores llenamos el contenedor del body del modal
+		$("#contenedor_update_sucursal").html(data);
+		//ya podemos mostrar el modal
+		$("#modal_update_sucursal").modal();
+	});
 
+	
+}
+function updateSucursal()
+{
+var id_sucursal =$("#txt_id_sucursal_update").text();	
+var sucursal =$("#txt_nombre_sucursal_update").prop("value");
+var telefono =$("#txt_telefono_sucursal_update").prop("value");
+var calle_numero =$("#txt_calle_numero_sucursal_update").prop("value");
+var colonia =$("#txt_colonia_sucursal_update").prop("value");
+var delegacion =$("#txt_delegacion_sucursal_update").prop("value");
+var cp =$("#txt_cp_sucursal_update").prop("value");
+$.post("control/update_sucursal.php",
+		{
+			id_sucursal:id_sucursal,
+			sucursal:sucursal,
+			telefono:telefono,
+			calle_numero:calle_numero,
+			colonia:colonia,
+			delegacion:delegacion,
+			cp:cp
+			
+		},
+		function(data){
+			//alert(data);
+			$("#modal_update_sucursal").modal("hide");
+			$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
+		});
+}
 //MESA
 function showNuevaMesa()
 {

@@ -20,7 +20,7 @@ echo '<tr class="active">
 <button class="btn btn-default" title="Detalles">
 <span class="glyphicon glyphicon-list-alt"></span>
 </button>
-<button class="btn btn-warning" title="Actualizar">
+<button class="btn btn-warning" id ="'.$fila['id_sucursal'].'" onclick="showUpdateSucursal(this.id)" title="Actualizar" >
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
 <button class="btn btn-danger" id ="'.$fila['id_sucursal'].'" onclick="deleteSucursal(this.id)" title="Eliminar">

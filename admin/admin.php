@@ -119,5 +119,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 <?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nueva_sucursal.php"; ?>
 <?php include "modal/nuevo_empleado.php"; ?>
+
+<?php include "modal/modificar_sucursal.php"; ?>
 </body>
 </html>
