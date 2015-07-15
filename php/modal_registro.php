@@ -7,31 +7,30 @@
         <h4 class="modal-title" id="myModalLabel">Ingrese sus datos a continuacion</h4>
       </div>
       <div class="modal-body">
-        <div class="form">
+        <div class="form" id="form_registro">
           <label>Nombre</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_nombre_registro" required>
           <label>Telefono</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_telefono_registro" required>
           <label>E-mail</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_email_registro" required>
           <label>RFC</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_rfc_registro" >
           <label>Calle y Numero</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_cale_registro" required>
           <label>Colonia</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_colonia_registro" required>
           <label>Municipio</label><br>
-<br>
+          <input type="text" class="form-control" id="txt_municipio_registro" required>
           <label>Codigo Postal</label><br>
-<br>
-
+          <input type="text" class="form-control" id="txt_cp_registro" required>
+          <br><br>
+          
         </div>
       </div>
       <div class="modal-footer">
-        <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="registrar();">Registrame</button>
-        </center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>  
+        <button  class="btn btn-primary" onclick="registrarCliente();">Registrame</button>
       </div>
   </div>
 </div>

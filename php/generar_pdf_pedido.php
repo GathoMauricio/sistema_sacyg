@@ -3,7 +3,7 @@
 <?php 
 
 include "fpdf/fpdf.php";
-$nombre_archivo="reservacion_".date('YdmHms').".pdf";
+$nombre_archivo="pedido_".date('YdmHms').".pdf";
 ?>
 <?php 
 
@@ -13,6 +13,7 @@ class generarpdf extends FPDF{
  		include "../control/conexion.php";
  		//creamos la orden con el total
  		$consulta="INSERT INTO orden (total_orden) VALUES (".$_GET['t'].")";
+		
 		mysqli_query($conexion,$consulta);
 		//obtenemos el ID q se genero
 		$idOrden=mysqli_insert_id($conexion);
@@ -21,13 +22,15 @@ class generarpdf extends FPDF{
 		$id_cliente=$_SESSION['id_cliente'];
 
 		//ingresamos los datos de la reservacion
-		$consulta="INSERT INTO reservacion (id_mesa,id_cliente,id_orden,fecha,hora) 
+		$consulta="INSERT INTO pedido_domicilio 
+		(id_orden,id_cliente,id_sucursal,latitud,longitud) 
 		VALUES 
-		(".$_GET['m'].",
-			".$id_cliente.",
+		(
 			".$idOrden.",
-			'".$_GET['f']."',
-			'".$_GET['h']."'
+			".$id_cliente.",
+			".$_GET['s'].",
+			'".$_GET['lat']."',
+			'".$_GET['lon']."'
 		)";
 		mysqli_query($conexion,$consulta);
 		
@@ -56,14 +59,13 @@ class generarpdf extends FPDF{
  		$this->SetTextColor(0,0,0);
  		$this->SetFillColor(255,255,255);
  		$this->Ln(50);
- 		$this->Cell(185,5,utf8_decode("Reservacion"),0,0,"C",true);
+ 		$this->Cell(185,5,utf8_decode("Pedido a domicilio"),0,0,"C",true);
  		$this->Ln(10);
  		//obteniendo datos del cliente y la reservacion
- 		$consulta="SELECT * FROM cliente c LEFT JOIN reservacion r 
- 		ON c.id_cliente=r.id_cliente LEFT JOIN mesa m 
- 		ON r.id_mesa=m.id_mesa LEFT JOIN sucursal s 
- 		ON m.id_sucursal=s.id_sucursal 
- 		WHERE r.id_orden=".$idOrden;
+ 		$consulta="SELECT * FROM cliente c LEFT JOIN pedido_domicilio pd 
+ 		ON c.id_cliente=pd.id_cliente LEFT JOIN sucursal s 
+ 		ON pd.id_sucursal=s.id_sucursal 
+ 		WHERE pd.id_orden=".$idOrden;
  		$datos=mysqli_query($conexion,$consulta);
 
  		if($fila=mysqli_fetch_array($datos))
@@ -73,16 +75,13 @@ class generarpdf extends FPDF{
 
  		$this->Cell(0,5,utf8_decode("Cliente: ".$fila['nombre']),0,0,"",true);
  		$this->Ln(10);
-		$this->Cell(0,5,utf8_decode("Fecha: ".$fila['fecha']),0,0,"",true);
- 		$this->Ln(10);
- 		$this->Cell(0,5,utf8_decode("hora: ".$fila['hora']." Hrs."),0,0,"",true);
- 		$this->Ln(10);
+		
  		$this->Cell(0,5,utf8_decode("Sucursal: ".$fila['sucursal']),0,0,"",true);
  		$this->Ln(10);
+
  		$this->Cell(0,5,utf8_decode("Direccion: ".$fila['calle_numero']." ".$fila['colonia']." ".$fila['municipio']." ".$fila['cp']),0,0,"",true);
  		$this->Ln(10);
-		$this->Cell(0,5,utf8_decode("Mesa: ".$fila['numero_mesa']),0,0,"",true);
- 		$this->Ln(10);
+		
  		}
  		$this->SetFont("Arial","B",15);
  		$this->Cell(185,5,utf8_decode("Pedido"),0,0,"C",true);
