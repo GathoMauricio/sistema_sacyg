@@ -93,7 +93,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 	<span class="glyphicon glyphicon-hand-up"></span>
 </a></center>
 <div class="titulo" id="empleado">Empleado 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo"><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoEmpleado();"><span class="glyphicon glyphicon-plus" ></span></button>
 </div>
 <div id="tabla_empleado" class="tabla"></div>
 <hr>
@@ -118,6 +118,6 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 
 <?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nueva_sucursal.php"; ?>
-
+<?php include "modal/nuevo_empleado.php"; ?>
 </body>
 </html>
