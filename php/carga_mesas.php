@@ -4,6 +4,6 @@ $consulta="SELECT * FROM mesa WHERE id_sucursal=".$_POST['id_sucursal']." AND id
 $datos=mysqli_query($conexion,$consulta);
 while($fila=mysqli_fetch_array($datos))
 {
-	echo '<option id="'.$fila['id_mesa'].'">Mesa '.$fila['id_mesa'].' - Capacidad '.$fila['capacidad'].' Personas</option>';
+	echo '<option value="'.$fila['id_mesa'].'">Mesa '.$fila['id_mesa'].' - Capacidad '.$fila['capacidad'].' Personas</option>';
 }
  ?>

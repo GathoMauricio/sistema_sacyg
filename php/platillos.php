@@ -54,7 +54,7 @@ $datos=mysqli_query($conexion,$consulta);
 		echo '
 		<p class="bg-danger" style="width:70%">Por favor 
 		<a href="#" onclick="showLogin();">inicia sesion</a> o 
-		<a href="#">registrate</a> 
+		<a href="#" onclick="showModalRegistro();">registrate</a> 
 		antes de comenzar</p>
 		';
 	}
@@ -90,3 +90,4 @@ $datos=mysqli_query($conexion,$consulta);
 </div>
 
 <?php include "modal_login.php" ?>
+<?php include "modal_registro.php" ?>

@@ -142,8 +142,12 @@ function generarPedido()
 			}
 			else
 			{
+				alert("Lo estamos redirigiendo a PayPal y descargando su recibo para finalizar la transaccion");
 				var total=$("#lbl_total").text();
-				window.open("php/generar_pdf_reservacion.php?t="+total);
+				var id_mesa=$("#txt_mesa_reservacion").prop('value');
+				var fecha = $("#txt_fecha_reservacion").prop('value');
+				var hora = $("#txt_hora_reservacion").prop('value');
+				window.open("php/generar_pdf_reservacion.php?t="+total+"&m="+id_mesa+"&f="+fecha+"&h="+hora);
 			}
 		}
 
@@ -175,4 +179,9 @@ function pedirPosicion(pos)
 function geolocalizame()
 {
 navigator.geolocation.getCurrentPosition(pedirPosicion);
+}
+
+function showModalRegistro()
+{
+	$("#modal_registro").modal();
 }
