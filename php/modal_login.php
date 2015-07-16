@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body">
         <div class="form-inline">
-          <input type="text" class="form-control" id="txt_usuario_login" placeholder="Ingresa tu usuario"><br><br>
+          <input type="text" class="form-control" id="txt_usuario_login" placeholder="Ingresa tu email"><br><br>
           <input type="password" class="form-control" id="txt_contrasena_login" placeholder="Ingresa tu contraseña">
         </div>
       </div>
