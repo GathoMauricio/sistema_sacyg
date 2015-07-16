@@ -1,16 +1,12 @@
+<?php include "fpdf/fpdf.php";?>
 <?php date_default_timezone_set("Mexico/General"); ?>
-
-<?php 
-
-include "fpdf/fpdf.php";
-$nombre_archivo="pedido_".date('YdmHms').".pdf";
-?>
+<?php $nombre_archivo="pedido_".date('YdmHms').".pdf"; ?>
+<?php session_start(); ?>
 <?php 
 
 class generarpdf extends FPDF{
 		function Header(){
-		session_start();
- 		include "../control/conexion.php";
+		include "../control/conexion.php";
  		//creamos la orden con el total
  		$consulta="INSERT INTO orden (total_orden) VALUES (".$_GET['t'].")";
 		
