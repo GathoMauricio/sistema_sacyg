@@ -13,8 +13,10 @@ if(!isset($_SESSION['administrador']))
 	<title>Administración</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/alert.css">
 	<script type="text/javascript" src="../js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.js"></script>
+	<script type="text/javascript" src="../js/alert.js"></script>
 	<script type="text/javascript" src="codigo.js"></script>
 	<style type="text/css">
 	body
@@ -97,15 +99,32 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 </div>
 <div id="tabla_empleado" class="tabla"></div>
 <hr>
-<center><a href="#cabecera">
+<center>
+<a href="#cabecera">
 	Ir al inicio
-	<span class="glyphicon glyphicon-hand-up"></span>
-</a></center>
+<span class="glyphicon glyphicon-hand-up"></span>
+</a>
+</center>
 <div class="titulo" id="alimento">Alimento 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo"><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoAlimento();">
+<span class="glyphicon glyphicon-plus" ></span>
+</button>
 </div>
 <div id="tabla_alimento" class="tabla"></div>
 
+<hr>
+<center>
+<a href="#cabecera">
+	Ir al inicio
+<span class="glyphicon glyphicon-hand-up"></span>
+</a>
+</center>
+<div class="titulo" id="alimento">Categoria 
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevaCategoria();">
+	<span class="glyphicon glyphicon-plus" ></span>
+</button>
+</div>
+<div id="tabla_categoria" class="tabla"></div>
 </center>
 
 <br><br> 
@@ -119,7 +138,10 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 <?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nueva_sucursal.php"; ?>
 <?php include "modal/nuevo_empleado.php"; ?>
+<?php include "modal/nuevo_alimento.php"; ?>
+<?php include "modal/nueva_categoria.php"; ?>
 
 <?php include "modal/modificar_sucursal.php"; ?>
+<?php include "modal/modificar_alimento.php"; ?>
 </body>
 </html>
