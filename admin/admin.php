@@ -104,7 +104,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 <div id="p_empleados">
 
 <div class="titulo" id="empleado">Empleados 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoEmpleado();"><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="showInsertEmpleado();"><span class="glyphicon glyphicon-plus" ></span></button>
 </div>
 <div id="tabla_empleado" class="tabla"></div>
 <hr>
