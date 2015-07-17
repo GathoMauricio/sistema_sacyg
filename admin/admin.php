@@ -108,14 +108,6 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 </div>
 <div id="tabla_empleado" class="tabla"></div>
 <hr>
-<<<<<<< HEAD
-<center><a href="#cabecera">
-	Ir al inicio
-	<span class="glyphicon glyphicon-hand-up"></span>
-</a></center>
-<div class="titulo" id="alimento">Alimento 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoAlimento();"><span class="glyphicon glyphicon-plus" ></span></button>
-=======
 </div>
 <div id="p_alimentos">
 <center>
@@ -124,7 +116,6 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 <button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoAlimento();">
 <span class="glyphicon glyphicon-plus" ></span>
 </button>
->>>>>>> origin/master
 </div>
 <div id="tabla_alimento" class="tabla"></div>
 <hr>
