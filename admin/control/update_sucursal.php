@@ -12,5 +12,5 @@ delegacion=	'".$_POST['delegacion']."',
 cp=	'".$_POST['cp']."' 
 WHERE id_sucursal=".$_POST['id_sucursal'];
 mysqli_query($conexion,$consulta);
-echo $consulta;
+
  ?>

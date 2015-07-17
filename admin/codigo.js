@@ -5,6 +5,8 @@ function soloNumeros() {
 }
 function init()
 {
+	$("#pestanas").tabs();
+
 	//LOAD AJAX
 	$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
 	$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
