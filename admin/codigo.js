@@ -128,7 +128,39 @@ $.post("control/insert_mesa.php",
 			$("#modal_nueva_mesa").modal("hide");
 		});
 }
-
+function showUpdateMesa(id)
+{
+	$.post("modal/get_mesa.php",{id:id},function(data){
+		$("#contenedor_update_mesa").html(data);
+		$("#modal_actualizar_mesa").modal();
+	});
+}
+function updateMesa(id)
+{
+	var id_mesa=$("#id_update_mesa").prop("value");
+	var id_sucursal=$("#txt_sucursal_mesa_update").prop("value");
+	var id_disponibilidad=$("#txt_disponibilidad_mesa_update").prop("value");
+	var numero_mesa=$("#txt_numero_mesa_update").prop("value");
+	var capacidad=$("#txt_capacidad_mesa_update").prop("value");
+	if(numero_mesa.length<=0 || capacidad <=0)
+	{
+		swal("Atencion!!!","Todos los campos son obligatorios","error");
+	}else
+	{
+		$.post("control/update_mesa.php",{
+			id_mesa:id_mesa,
+			id_sucursal:id_sucursal,
+			id_disponibilidad:id_disponibilidad,
+			numero_mesa:numero_mesa,
+			capacidad:capacidad
+		},function(data){
+			swal("Genial!!!","Registro actualizado","success");
+			$("#modal_actualizar_mesa").modal("hide");
+			$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_mesa").load("tabla/tabla_mesa.php");
+		});
+	}
+}
 function deleteMesa(id_mesa)
 {
 	if(confirm("¿Seguro que deseas eliminar esta mesa?"))

@@ -17,9 +17,6 @@ echo '<tr class="active">
 <td>'.$fila['telefono'].'</td>
 <td>'.$fila['calle_numero'].' '.$fila['colonia'].' '.$fila['delegacion'].' '.$fila['cp'].'</td>
 <td>
-<button class="btn btn-default" title="Detalles">
-<span class="glyphicon glyphicon-list-alt"></span>
-</button>
 <button class="btn btn-warning" id ="'.$fila['id_sucursal'].'" onclick="showUpdateSucursal(this.id)" title="Actualizar" >
 <span class="glyphicon glyphicon-pencil"></span>
 </button>

@@ -25,10 +25,7 @@ echo '<tr class="active">
 <td>'.$fila['capacidad'].'</td>
 <td>'.$fila['estatus'].'</td>
 <td>
-<button class="btn btn-default" title="Detalles">
-<span class="glyphicon glyphicon-list-alt"></span>
-</button>
-<button class="btn btn-warning" title="Actualizar">
+<button class="btn btn-warning" title="Actualizar" id ="'.$fila['id_mesa'].'" onclick="showUpdateMesa(this.id)">
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
 <button class="btn btn-danger" id ="'.$fila['id_mesa'].'" onclick="deleteMesa(this.id)" title="Eliminar">

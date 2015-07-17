@@ -148,13 +148,16 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 <label>SACYG <span class="glyphicon glyphicon-copyright-mark"></span> 2015</label>
 </center>
 
-<?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nueva_sucursal.php"; ?>
+<?php include "modal/nueva_mesa.php"; ?>
 <?php include "modal/nuevo_empleado.php"; ?>
 <?php include "modal/nuevo_alimento.php"; ?>
 <?php include "modal/nueva_categoria.php"; ?>
 
 <?php include "modal/modificar_sucursal.php"; ?>
+<?php include "modal/modificar_mesa.php"; ?>
+
 <?php include "modal/modificar_alimento.php"; ?>
+
 </body>
 </html>
