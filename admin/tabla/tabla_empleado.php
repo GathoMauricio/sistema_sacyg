@@ -24,7 +24,7 @@ echo '<tr class="active">
 <td>'.$fila['telefono'].'</td>
 <td>'.$fila['email'].'</td>
 <td>
-<button class="btn btn-warning" title="Actualizar">
+<button class="btn btn-warning" title="Actualizar" id ="'.$fila['id_empleado'].'" onclick="showUpdateEmpleado(this.id)">
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
 <button class="btn btn-danger" id ="'.$fila['id_empleado'].'" onclick="deleteEmpleado(this.id)" title="Eliminar">

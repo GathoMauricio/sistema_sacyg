@@ -147,7 +147,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 
 <?php include "modal/modificar_sucursal.php"; ?>
 <?php include "modal/modificar_mesa.php"; ?>
-
+<?php include "modal/modificar_empleado.php"; ?>
 <?php include "modal/modificar_alimento.php"; ?>
 
 </body>

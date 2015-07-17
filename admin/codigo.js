@@ -239,7 +239,63 @@ function insertEmpleado()
 		}
 	}
 }
+function showUpdateEmpleado(id)
+{
+	$.post("modal/get_empleado.php",{id:id},function(data){
+		$("#contenedor_update_empleado").html(data);
+		$("#modal_update_empleado").modal();
+	});
+}
+function updateEmpleado()
+{
+	var id_empleado=$("#txt_id_empleado_update").prop("value");
+	var id_rol=$("#txt_rol_empleado_update").prop("value");
 
+	var hora_entrada=$("#txt_hora1_empleado_update").prop("value");
+	var hora_salida=$("#txt_hora2_empleado_update").prop("value");
+	var sueldo=$("#txt_sueldo_empleado_update").prop("value");
+
+	var id_sucursal=$("#txt_sucursal_empleado_update").prop("value");
+	var nombre=$("#txt_nombre_empleado_update").prop("value");
+	var ap_paterno=$("#txt_apaterno_empleado_update").prop("value");
+	var ap_materno=$("#txt_amaterno_empleado_update").prop("value");
+	var fecha_nacimiento=$("#txt_fecha_empleado_update").prop("value");
+	var telefono=$("#txt_telefono_empleado_update").prop("value");
+	var email=$("#txt_email_empleado_update").prop("value");
+	var calle_numero=$("#txt_calle_numero_empleado_update").prop("value");
+	var colonia=$("#txt_colonia_empleado_update").prop("value");
+	var municipio=$("#txt_municipio_empleado_update").prop("value");
+	var cp=$("#txt_cp_empleado_update").prop("value");
+	var exp = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+	if(hora_entrada.length<=0||hora_salida.length<=0||sueldo.length<=0
+		||nombre.length<=0||ap_materno.length<=0||ap_paterno.length<=0||fecha_nacimiento.length<=0||telefono.length<=0
+		||email.length<=0||calle_numero.length<=0||colonia.length<=0||municipio.length<=0||cp.length<=0)
+	{
+		swal("Atencion!!!","Todos los campos son obligatorios","error");
+	}else
+	{
+		if(!exp.test(email.trim()))
+		{
+			swal("Debes ingresar un email valido");
+		}else
+			{
+				$.post("control/update_empleado.php",{
+					id_rol:id_rol,
+					hora_entrada:hora_entrada,hora_salida:hora_salida,
+					sueldo:sueldo,id_sucursal:id_sucursal,nombre:nombre,
+					ap_paterno:ap_paterno,ap_materno:ap_materno,
+					fecha_nacimiento:fecha_nacimiento,telefono:telefono,
+					email:email,calle_numero:calle_numero,
+					colonia:colonia,municipio:municipio,cp:cp
+				},function(data){
+					swal("Genial!!!",data,"success");
+					$("#modal_update_empleado").modal("hide");
+					$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
+					$("#tabla_empleado").load("tabla/tabla_empleado.php");
+				});
+			}
+	}
+}
 function deleteEmpleado(id_empleado)
 {
 	if(confirm("¿Seguro que deseas eliminar este registro?"))
