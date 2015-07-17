@@ -102,7 +102,7 @@ Bienvenido: <?php echo $_SESSION['empleado']; ?>
 	<span class="glyphicon glyphicon-hand-up"></span>
 </a></center>
 <div class="titulo" id="alimento">Alimento 
-<button class="btn btn-default"style="float:right;" title="Agregar nuevo"><span class="glyphicon glyphicon-plus" ></span></button>
+<button class="btn btn-default"style="float:right;" title="Agregar nuevo" onclick="nuevoAlimento();"><span class="glyphicon glyphicon-plus" ></span></button>
 </div>
 <div id="tabla_alimento" class="tabla"></div>
 

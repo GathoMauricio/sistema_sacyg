@@ -153,5 +153,47 @@ function deleteEmpleado(id_empleado)
 	}	
 }
 
+/*ALIMENTO*/
+function nuevoAlimento()
+{
+$("#modal_nuevo_alimento").modal();
+}
+function insertAlimento()
+{
+var alimento =$("#txt_nombre_alimento_nuevo").prop("value");
+var descripcion =$("#txt_telefono_sucursal_nueva").prop("value");
+var precio =$("#txt_mapa_sucursal_nueva").prop("value");
+
+$.post("control/insert_sucursal.php",
+		{
+			sucursal:sucursal,
+			telefono:telefono,
+			mapa:mapa,
+			calle_numero:calle_numero,
+			colonia:colonia,
+			delegacion:delegacion,
+			cp:cp
+			
+		},
+		function(data){
+			alert(data);
+			$("#modal_nueva_sucursal").modal("hide");
+		});
+}
+function deleteAlimento(id_alimento)
+{
+	if(confirm("¿Seguro que deseas eliminar este alimento?"))
+	{
+		$.post("control/delete_alimento.php",
+			{
+				id_alimento:id_alimento
+			},
+			function(data){
+				alert(data);
+				$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
+				$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
+			});
+	}	
+}
 
 
