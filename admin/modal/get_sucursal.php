@@ -27,7 +27,7 @@ if($fila=mysqli_fetch_array($datos))
         <input type="text" class="form-control" id="txt_nombre_sucursal_update" value="<?php echo $sucursal; ?>"> 
       </div>
       <div class="modal-body">
-        <label>Telefono</label>
+        <label>Teléfono</label>
         <input type="text" class="form-control" id="txt_telefono_sucursal_update" value="<?php echo $telefono; ?>"> 
       </div>
       <!--
@@ -37,7 +37,7 @@ if($fila=mysqli_fetch_array($datos))
       </div>
       -->
       <div class="modal-body">
-        <label>Calle numero</label>
+        <label>Calle número</label>
         <input type="text" class="form-control" id="txt_calle_numero_sucursal_update" value="<?php echo $calle_numero; ?>"> 
       </div>
       <div class="modal-body">
@@ -45,10 +45,10 @@ if($fila=mysqli_fetch_array($datos))
         <input type="text" class="form-control" id="txt_colonia_sucursal_update" value="<?php echo $colonia; ?>"> 
       </div>
       <div class="modal-body">
-        <label>Delegacion</label>
+        <label>Delegación</label>
         <input type="text" class="form-control" id="txt_delegacion_sucursal_update" value="<?php echo $delegacion; ?>"> 
       </div>
       <div class="modal-body">
-        <label>Codigo Postal</label>
+        <label>Código Postal</label>
         <input type="text" class="form-control" id="txt_cp_sucursal_update" value="<?php echo $cp; ?>"> 
       </div>

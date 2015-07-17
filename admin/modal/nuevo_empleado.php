@@ -49,7 +49,7 @@
         <input type="text" class="form-control" id="txt_amaterno_empleado_nuevo"> 
         <label>Fecha de nacimiento</label>
         <input type="date" class="form-control" id="txt_fecha_empleado_nuevo"> 
-        <label>Telefono</label>
+        <label>Teléfono</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_telefono_empleado_nuevo"> 
         <label>E-mail</label>
         <input type="text" class="form-control" id="txt_email_empleado_nuevo"> 

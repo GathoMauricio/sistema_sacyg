@@ -31,7 +31,7 @@ while($fila=mysqli_fetch_array($datos))
             }
            ?>
            </select>
-        <label>Numero de mesa</label>
+        <label>Número de mesa</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_numero_mesa_update" value="<?php echo $numero_mesa; ?>"> 
         <label>Capacidad</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_capacidad_mesa_update" value="<?php echo $capacidad; ?>">

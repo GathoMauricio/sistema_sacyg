@@ -28,7 +28,7 @@ $datos=mysqli_query($conexion,$consulta);
         <input type="text" class="form-control" id="txt_nombre_alimento_nuevo"> 
       </div>
       <div class="modal-body">
-        <label>Descripcion</label>
+        <label>Descripción</label>
         <input type="text" class="form-control" id="txt_descripcion_alimento_nuevo"> 
       </div>
       <div class="modal-body">

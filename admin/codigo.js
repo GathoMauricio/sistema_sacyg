@@ -144,7 +144,7 @@ function updateMesa(id)
 	var capacidad=$("#txt_capacidad_mesa_update").prop("value");
 	if(numero_mesa.length<=0 || capacidad <=0)
 	{
-		swal("Atencion!!!","Todos los campos son obligatorios","error");
+		swal("Atención!","Todos los campos són obligatorios","error");
 	}else
 	{
 		$.post("control/update_mesa.php",{
@@ -154,7 +154,7 @@ function updateMesa(id)
 			numero_mesa:numero_mesa,
 			capacidad:capacidad
 		},function(data){
-			swal("Genial!!!","Registro actualizado","success");
+			swal("Genial!","´Registro actualizado","success");
 			$("#modal_actualizar_mesa").modal("hide");
 			$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
 			$("#tabla_mesa").load("tabla/tabla_mesa.php");
@@ -208,7 +208,7 @@ function insertEmpleado()
 		||nombre.length<=0||ap_materno.length<=0||ap_paterno.length<=0||fecha_nacimiento.length<=0||telefono.length<=0
 		||email.length<=0||calle_numero.length<=0||colonia.length<=0||municipio.length<=0||cp.length<=0)
 	{
-		swal("Atencion!!!","Todos los campos son obligatorios","error");
+		swal("Atención!","Todos los campos són obligatorios","error");
 	}else
 	{
 		if(!exp.test(email.trim()))
@@ -218,7 +218,7 @@ function insertEmpleado()
 		{
 			if(contrasena!=recontrasena)
 			{
-				swal("Las contrasenas no coinciden!!!");
+				swal("Las contraseñas no coinciden!");
 			}else
 			{
 				$.post("control/insert_empleado.php",{
@@ -230,7 +230,7 @@ function insertEmpleado()
 					email:email,calle_numero:calle_numero,
 					colonia:colonia,municipio:municipio,cp:cp
 				},function(data){
-					swal("Genial!!!",data,"success");
+					swal("Genial!",data,"success");
 					$("#modal_nuevo_empleado").modal("hide");
 					$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
 					$("#tabla_empleado").load("tabla/tabla_empleado.php");
@@ -271,7 +271,7 @@ function updateEmpleado()
 		||nombre.length<=0||ap_materno.length<=0||ap_paterno.length<=0||fecha_nacimiento.length<=0||telefono.length<=0
 		||email.length<=0||calle_numero.length<=0||colonia.length<=0||municipio.length<=0||cp.length<=0)
 	{
-		swal("Atencion!!!","Todos los campos son obligatorios","error");
+		swal("Atención!!!","´Todos los campos són obligatorios","error");
 	}else
 	{
 		if(!exp.test(email.trim()))
@@ -288,7 +288,7 @@ function updateEmpleado()
 					email:email,calle_numero:calle_numero,
 					colonia:colonia,municipio:municipio,cp:cp
 				},function(data){
-					swal("Genial!!!",data,"success");
+					swal("Genial!",data,"success");
 					$("#modal_update_empleado").modal("hide");
 					$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
 					$("#tabla_empleado").load("tabla/tabla_empleado.php");
@@ -322,7 +322,7 @@ function insertCategoria()
 
 	if(categoria.length<=0)
 	{
-		swal("Atencion!!!","Debes llenar todos los campos","error");
+		swal("Atención!"," Debes llenar todos los campos","error");
 	}else
 	{
 		$.post("control/insert_categoria.php",{categoria:categoria},function(data){
@@ -337,7 +337,7 @@ function deleteCategoria(id)
 {
 	swal(
 		{title: '¿Realmente desea eliminar este registro?',
-		text: 'Este cambio ya no se podra deshacer en el futuro!!!',
+		text: 'Este cambio ya no se podra deshacer en el futuro!',
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor:'#3085d6',
@@ -346,7 +346,7 @@ function deleteCategoria(id)
 		closeOnConfirm: false }, 
 		function() { 
 			$.post("control/delete_categoria.php",{id:id},function(data){
-			swal( 'Eliminado','El registro ha sido eliminado!!!', 'success');
+			swal( 'Eliminado',' El registro ha sido eliminado!', 'success');
 			$("#tabla_categoria").html("<center><img src='../img/load.gif' width='200'></center>");
 			$("#tabla_categoria").load("tabla/tabla_categoria.php");
 			});
@@ -366,7 +366,7 @@ function insertAlimento()
 	var precio=$("#txt_precio_alimento_nuevo").prop("value");
 	if(alimento.length<=0 || descripcion.length<=0 || precio.length<=0)
 	{
-		swal("Atencion!!!","Todos los campos son obligatorios","error");
+		swal("Atención!","Todos los campos són obligatorios","error");
 	}else
 	{
 		$.post("control/insert_alimento.php",
@@ -376,7 +376,7 @@ function insertAlimento()
 				descripcion:descripcion,
 				precio:precio
 			},function(data){
-			swal("Genial!!!",data,"success");
+			swal("Genial!",data,"success");
 			$("#modal_nuevo_alimento").modal("hide");
 			$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
 			$("#tabla_alimento").load("tabla/tabla_alimento.php");
@@ -400,7 +400,7 @@ function updateAlimento(id)
 	var precio=$("#txt_precio_alimento_update").prop("value");
 	if(alimento.length<=0 || descripcion.length<=0 || precio.length<=0)
 	{
-		swal("Atencion!!!","Todos los campos son obligatorios","error");
+		swal("Atención!","Todos los campos són obligatorios","error");
 	}else
 	{
 		$.post("control/update_alimento.php",
@@ -411,7 +411,7 @@ function updateAlimento(id)
 				descripcion:descripcion,
 				precio:precio
 			},function(data){
-			swal("Genial!!!","Registro actualizado","success");
+			swal("Genial!","´Registro actualizado","success");
 			$("#modal_actualizar_alimento").modal("hide");
 			$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
 			$("#tabla_alimento").load("tabla/tabla_alimento.php");

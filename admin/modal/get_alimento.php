@@ -34,7 +34,7 @@ while($fila=mysqli_fetch_array($datos))
 </select>
 <label>Nombre del alimento</label>
 <input type="text" class="form-control"  id="txt_nombre_alimento_update" value="<?php echo $alimento; ?>"> 
-<label>Descripcion</label>
+<label>Descripción</label>
 <input type="text" class="form-control" id="txt_descripcion_alimento_update" value="<?php echo $descripcion; ?>"> 
 <label>Precio</label>
 <input type="text" class="form-control" onkeypress="soloNumeros();" maxlength="3" id="txt_precio_alimento_update" value="<?php echo $precio; ?>"> 

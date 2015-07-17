@@ -53,7 +53,7 @@ while($fila=mysqli_fetch_array($datos))
         <input type="time" class="form-control" id="txt_hora1_empleado_update" value="<?php echo $hora_entrada; ?>">
         <label>Hora de salida</label>
         <input type="time" class="form-control" id="txt_hora2_empleado_update" value="<?php echo $hora_salida; ?>">
-        <label>sueldo</label>
+        <label>Sueldo</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_sueldo_empleado_update" value="<?php echo $sueldo; ?>">
         <label>Sucursal</label>
         <select id="txt_sucursal_empleado_update" class="form-control">
@@ -74,16 +74,16 @@ while($fila=mysqli_fetch_array($datos))
         <input type="text" class="form-control" id="txt_amaterno_empleado_update" value="<?php echo $ap_materno; ?>"> 
         <label>Fecha de nacimiento</label>
         <input type="date" class="form-control" id="txt_fecha_empleado_update" value="<?php echo $fecha_nacimiento; ?>"> 
-        <label>Telefono</label>
+        <label>Teléfono</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_telefono_empleado_update" value="<?php echo $telefono; ?>"> 
         <label>E-mail</label>
         <input type="text" class="form-control" id="txt_email_empleado_update" value="<?php echo $email; ?>"> 
-        <label>Calle-numero</label>
+        <label>Calle-número</label>
         <input type="text" class="form-control" id="txt_calle_numero_empleado_update" value="<?php echo $calle_numero; ?>"> 
         <label>Colonia</label>
         <input type="text" class="form-control" id="txt_colonia_empleado_update" value="<?php echo $colonia; ?>"> 
         <label>Municipio</label>
         <input type="text" class="form-control" id="txt_municipio_empleado_update" value="<?php echo $municipio; ?>"> 
-        <label>Codigo Postal</label>
+        <label>Código Postal</label>
         <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_cp_empleado_update" value="<?php echo $cp; ?>"> 
         </div>

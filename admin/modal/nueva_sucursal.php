@@ -11,7 +11,7 @@
         <input type="text" class="form-control" id="txt_nombre_sucursal_nueva"> 
       </div>
       <div class="modal-body">
-        <label>Telefono</label>
+        <label>Teléfono</label>
         <input type="text" class="form-control" id="txt_telefono_sucursal_nueva"> 
       </div>
       <div class="modal-body">
@@ -19,7 +19,7 @@
         <input type="text" class="form-control" id="txt_mapa_sucursal_nueva"> 
       </div>
       <div class="modal-body">
-        <label>Calle numero</label>
+        <label>Calle número</label>
         <input type="text" class="form-control" id="txt_calle_numero_sucursal_nueva"> 
       </div>
       <div class="modal-body">
@@ -27,11 +27,11 @@
         <input type="text" class="form-control" id="txt_colonia_sucursal_nueva"> 
       </div>
       <div class="modal-body">
-        <label>Delegacion</label>
+        <label>Delegación</label>
         <input type="text" class="form-control" id="txt_delegacion_sucursal_nueva"> 
       </div>
       <div class="modal-body">
-        <label>Codigo Postal</label>
+        <label>Código Postal</label>
         <input type="text" class="form-control" id="txt_cp_sucursal_nueva"> 
       </div>
       <div class="modal-footer">
