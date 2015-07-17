@@ -203,12 +203,40 @@ function insertEmpleado()
 	var colonia=$("#txt_colonia_empleado_nuevo").prop("value");
 	var municipio=$("#txt_municipio_empleado_nuevo").prop("value");
 	var cp=$("#txt_cp_empleado_nuevo").prop("value");
-
-	if(usuario.length<=0||contrasena.length<=0||recontrasena.length<=0||hora_entrada.length<=0||hora_salida||sueldo.length<=0
+	var exp = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+	if(usuario.length<=0||contrasena.length<=0||recontrasena.length<=0||hora_entrada.length<=0||hora_salida.length<=0||sueldo.length<=0
 		||nombre.length<=0||ap_materno.length<=0||ap_paterno.length<=0||fecha_nacimiento.length<=0||telefono.length<=0
 		||email.length<=0||calle_numero.length<=0||colonia.length<=0||municipio.length<=0||cp.length<=0)
 	{
 		swal("Atencion!!!","Todos los campos son obligatorios","error");
+	}else
+	{
+		if(!exp.test(email.trim()))
+		{
+			swal("Debes ingresar un email valido");
+		}else
+		{
+			if(contrasena!=recontrasena)
+			{
+				swal("Las contrasenas no coinciden!!!");
+			}else
+			{
+				$.post("control/insert_empleado.php",{
+					usuario:usuario,contrasena:contrasena,id_rol:id_rol,
+					hora_entrada:hora_entrada,hora_salida:hora_salida,
+					sueldo:sueldo,id_sucursal:id_sucursal,nombre:nombre,
+					ap_paterno:ap_paterno,ap_materno:ap_materno,
+					fecha_nacimiento:fecha_nacimiento,telefono:telefono,
+					email:email,calle_numero:calle_numero,
+					colonia:colonia,municipio:municipio,cp:cp
+				},function(data){
+					swal("Genial!!!",data,"success");
+					$("#modal_nuevo_empleado").modal("hide");
+					$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
+					$("#tabla_empleado").load("tabla/tabla_empleado.php");
+				});
+			}
+		}
 	}
 }
 

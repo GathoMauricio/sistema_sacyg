@@ -1,9 +1,52 @@
 <?php include"../../control/conexion.php"; ?>
 <?php 
-$consulta= "INSERT INTO empleado(id_usuario, id_sucursal, nombre, ap_paterno, 
-	ap_materno, fecha_nacimiento, telefono, email, calle_numero, colonia, municipio, cp) 
-VALUES (".$_POST['empleado_usuario'].",
-	".$_POST['empleado_sucursal'].",
+$consulta= "INSERT INTO nomina 
+(
+	hora_entrada,
+	hora_salida,
+	sueldo
+)VALUES(
+'".$_POST['hora_entrada']."',
+'".$_POST['hora_salida']."',
+".$_POST['sueldo']."
+)
+";
+mysqli_query($conexion,$consulta);
+$id_nomina=mysqli_insert_id($conexion);
+$consulta= "INSERT INTO usuario 
+(
+	id_rol,
+	id_nomina,
+	usuario,
+	contrasena
+)VALUES
+(
+	".$_POST['id_rol'].",
+	".$id_nomina.",
+	'".md5($_POST['hora_entrada'])."',
+	'".md5($_POST['hora_salida'])."'
+)
+";
+mysqli_query($conexion,$consulta);
+$id_usuario=mysqli_insert_id($conexion);
+$consulta= "INSERT INTO empleado 
+(
+	id_usuario,
+	id_sucursal,
+	nombre,
+	ap_paterno,
+	ap_materno,
+	fecha_nacimiento,
+	telefono,
+	email,
+	calle_numero,
+	colonia,
+	municipio,
+	cp
+)VALUES
+(
+	".$id_usuario.",
+	".$_POST['id_sucursal'].",
 	'".$_POST['nombre']."',
 	'".$_POST['ap_paterno']."',
 	'".$_POST['ap_materno']."',
@@ -14,6 +57,8 @@ VALUES (".$_POST['empleado_usuario'].",
 	'".$_POST['colonia']."',
 	'".$_POST['municipio']."',
 	'".$_POST['cp']."'
-	)";
+)
+";
 mysqli_query($conexion,$consulta);
+echo "El registro se inserto con exito!!!";
  ?>

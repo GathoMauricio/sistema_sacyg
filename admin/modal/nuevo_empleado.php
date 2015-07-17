@@ -50,7 +50,7 @@
         <label>Fecha de nacimiento</label>
         <input type="date" class="form-control" id="txt_fecha_empleado_nuevo"> 
         <label>Telefono</label>
-        <input type="text" class="form-control" id="txt_telefono_empleado_nuevo"> 
+        <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_telefono_empleado_nuevo"> 
         <label>E-mail</label>
         <input type="text" class="form-control" id="txt_email_empleado_nuevo"> 
         <label>Calle-numero</label>
@@ -60,7 +60,7 @@
         <label>Municipio</label>
         <input type="text" class="form-control" id="txt_municipio_empleado_nuevo"> 
         <label>Codigo Postal</label>
-        <input type="text" class="form-control" id="txt_cp_empleado_nuevo"> 
+        <input type="text" onkeypress="soloNumeros();" class="form-control" id="txt_cp_empleado_nuevo"> 
         </div>
       </div>
       <div class="modal-footer">

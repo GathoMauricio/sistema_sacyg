@@ -24,9 +24,6 @@ echo '<tr class="active">
 <td>'.$fila['telefono'].'</td>
 <td>'.$fila['email'].'</td>
 <td>
-<button class="btn btn-default" title="Detalles">
-<span class="glyphicon glyphicon-list-alt"></span>
-</button>
 <button class="btn btn-warning" title="Actualizar">
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
