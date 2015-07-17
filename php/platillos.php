@@ -46,7 +46,15 @@ $datos=mysqli_query($conexion,$consulta);
 	if(isset($_SESSION['id_cliente']))
 	{
 		echo '
-		<p class="bg-primary" style="width:70%">Bienvenid@ '.$_SESSION['nombre'].'</p>
+		<p class="bg-primary" style="width:70%">Bienvenid@ '.$_SESSION['nombre'].' 
+		<a href="control/cerrar_sesion.php" class="glyphicon glyphicon-log-out" style="color:white" title="Cerrar sesion">
+		</a>
+		</p>
+		<p class="bg-primary" style="width:70%"> 
+		<a href="control/cerrar_sesion.php"  class="glyphicon glyphicon-refresh" style="color:white"  title="Comenzar de nuevo">
+		 Comenzar de nuevo
+		</a>
+		</p>
 		<input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - its fast, free and secure!" onclick="generarPedido();">
 		';
 	}else
@@ -54,8 +62,11 @@ $datos=mysqli_query($conexion,$consulta);
 		echo '
 		<p class="bg-danger" style="width:70%">Por favor 
 		<a href="#" onclick="showLogin();">inicia sesion</a> o 
-		<a href="#">registrate</a> 
+		<a href="#" onclick="showModalRegistro();">registrate</a> 
 		antes de comenzar</p>
+		<p class="bg-warning" style="width:70%">
+		<a href="#" onclick="showRecuperacion();">¿Olvidate tu contraseña?</a> 
+		</p>
 		';
 	}
 
@@ -90,3 +101,5 @@ $datos=mysqli_query($conexion,$consulta);
 </div>
 
 <?php include "modal_login.php" ?>
+<?php include "modal_registro.php" ?>
+<?php include "modal_recuperacion.php" ?>

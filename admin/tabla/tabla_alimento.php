@@ -22,13 +22,10 @@ echo '<tr class="active">
 <td>'.$fila['descripcion'].'</td>
 <td>$'.$fila['precio'].'</td>
 <td>
-<button class="btn btn-default" title="Detalles">
-<span class="glyphicon glyphicon-list-alt"></span>
-</button>
-<button class="btn btn-warning" title="Actualizar">
+<button class="btn btn-warning" id="'.$fila['id_alimento'].'" title="Actualizar" onclick="showUpdateAlimento(this.id);">
 <span class="glyphicon glyphicon-pencil"></span>
 </button>
-<button class="btn btn-danger" title="Eliminar">
+<button class="btn btn-danger" title="Eliminar" id="'.$fila['id_alimento'].'" onclick="deleteAlimento(this.id);">
 <span class="glyphicon glyphicon-trash"></span>
 </button>
 </td></tr>';

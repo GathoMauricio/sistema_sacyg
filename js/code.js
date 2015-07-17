@@ -39,6 +39,51 @@ function cargarPlatillos()
 	});
 	
 }
+function cargarEstablecimientos()
+{
+	$("#contenedor_principal").html("<img src='img/load.gif'>");
+	$.post("php/establecimientos.php",{},function(data){//JQUERY: función post 
+		$("#contenedor_principal").html(data);//AJAX:llenando contenedor 
+		
+		(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+	});
+}
+function cargarContactanos()
+{
+	$("#contenedor_principal").html("<img src='img/load.gif'>");
+	$.post("php/contactanos.php",{},function(data){//JQUERY: función post 
+		$("#contenedor_principal").html(data);//AJAX:llenando contenedor 
+		
+		(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+	});
+}
+function cargarQuienes()
+{
+	$("#contenedor_principal").html("<img src='img/load.gif'>");
+	$.post("php/quienes.php",{},function(data){//JQUERY: función post 
+		$("#contenedor_principal").html(data);//AJAX:llenando contenedor 
+		
+		(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+	});
+}
 var contador=0; //se utiliza para poner un ID único a cada Item
 var total=0;//lleva la suma de los precios de los items
 function soltado(e,elemento)
@@ -104,9 +149,9 @@ function validaCliente()
 		,function(data){
 			if(data >= 1)
 			{
-				cargarPlatillos();
+				window.location="index.php";
 			}else{
-				alert("Datos incorrectos!!!");
+				sweetAlert("Oops!!!","Los datos son incorrectos o tal vez has olvidado activar tu cuenta!!!","error");
 			}
 		});
 }
@@ -131,19 +176,23 @@ function generarPedido()
 		var mesa=$("#txt_mesa_reservacion").prop("value");
 		if(fecha.length<=0 || hora.length<=0 || mesa.length<=0){
 			$("#modal_reservacion").modal();
-			alert("Es necesario llenar todos los campos!!!"); 
+			swal("Es necesario llenar todos los campos!!!"); 
 		}else{
 
 			if(cont<=0)
 			{
-				alert("No hay productos");
+				swal("No hay productos");
 				document.getElementById("rb_reservacion").checked=false;
 				document.getElementById("rb_domicilio").checked=false;
 			}
 			else
 			{
+				//swal("Lo estamos redirigiendo a PayPal y descargando su recibo para finalizar la transaccion");
 				var total=$("#lbl_total").text();
-				window.open("php/generar_pdf_reservacion.php?t="+total);
+				var id_mesa=$("#txt_mesa_reservacion").prop('value');
+				var fecha = $("#txt_fecha_reservacion").prop('value');
+				var hora = $("#txt_hora_reservacion").prop('value');
+				window.open("php/generar_pdf_reservacion.php?t="+total+"&m="+id_mesa+"&f="+fecha+"&h="+hora);
 			}
 		}
 
@@ -156,10 +205,15 @@ function generarPedido()
 			if(latitud.length<=0 || longitud.length<=0)
 			{
 				document.getElementById("rb_domicilio").checked=false;
-				alert("Es necesario llenar todos los campos!!!");
+				swal("Es necesario llenar todos los campos!!!");
 				
 			}else{
-				alert("Ok pedido");
+				//swal("Lo estamos redirigiendo a PayPal y descargando su recibo para finalizar la transaccion");
+				var total=$("#lbl_total").text();
+				var s=$("#txt_sucursal_pedido").prop("value");
+				var lat = $("#txt_latitud_pedido").prop("value");
+				var lon = $("#txt_longitud_pedido").prop("value");
+				window.open("php/generar_pdf_pedido.php?t="+total+"&lat="+lat+"&lon="+lon+"&s="+s);
 				
 			}
 			
@@ -175,4 +229,117 @@ function pedirPosicion(pos)
 function geolocalizame()
 {
 navigator.geolocation.getCurrentPosition(pedirPosicion);
+}
+
+function showModalRegistro()
+{
+	$("#modal_registro").modal();
+}
+function registrarCliente()
+{
+	var nombre = $("#txt_nombre_registro").prop("value");
+	var telefono = $("#txt_telefono_registro").prop("value");
+	var email = $("#txt_email_registro").prop("value");
+	var rfc = $("#txt_rfc_registro").prop("value");
+	var calle_numero = $("#txt_calle_registro").prop("value");
+	var colonia = $("#txt_colonia_registro").prop("value");
+	var municipio = $("#txt_municipio_registro").prop("value");
+	var cp = $("#txt_cp_registro").prop("value");
+
+	var contrasena = $("#txt_contrasena_registro").prop("value");
+	var recontrasena = $("#txt_recontrasena_registro").prop("value");
+
+	//Expresion regular para validar email
+    var exp = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+
+	if(nombre.length<=0 || email.length<=0 || calle_numero.length<=0 || colonia.length<=0 ||municipio.length<=0 || cp.length<=0 || contrasena.length<=0 || recontrasena.length<=0)
+	{
+		swal("Los campos marcados con (*) son obligatorios ");
+	}else{
+		if(contrasena!=recontrasena)
+		{
+			swal("Oops!!! Parece q las contraseñas no coinciden!!!");
+		}else{
+			if(!exp.test(email.trim()))
+			{
+				swal("Ey, Ese no parece ser un e-mail valido !!!");
+			}else{
+				$.post("control/insert_cliente.php",
+				{
+				nombre:nombre,
+				telefono:telefono,
+				email:email,
+				rfc:rfc,
+				calle_numero:calle_numero, 
+				colonia:colonia,
+				municipio:municipio,
+				cp:cp,
+				contrasena:contrasena
+				},function(data){
+					swal(data);
+					var nombre = $("#txt_nombre_registro").prop("value","");
+					var telefono = $("#txt_telefono_registro").prop("value","");
+					var email = $("#txt_email_registro").prop("value","");
+					var rfc = $("#txt_rfc_registro").prop("value","");
+					var calle_numero = $("#txt_calle_registro").prop("value","");
+					var colonia = $("#txt_colonia_registro").prop("value","");
+					var municipio = $("#txt_municipio_registro").prop("value","");
+					var cp = $("#txt_cp_registro").prop("value","");
+
+					var contrasena = $("#txt_contrasena_registro").prop("value","");
+					var recontrasena = $("#txt_recontrasena_registro").prop("value","");
+					$("#modal_registro").modal("hide");
+				});
+			}
+		}
+	}
+}
+function showRecuperacion()
+{
+	$("#modal_recuperacion").modal();
+}
+function recuperacion()
+{
+	var exp = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+	var email = $("#txt_email_recuperacion").prop("value");
+	if(!exp.test(email.trim()))
+	{
+		swal("Debes ingresar un email valido");
+	}else{
+		$.post("control/recuperacion.php",{email:email},function(data){
+			swal(data);
+			$("#modal_recuperacion").modal("hide");
+		});
+	}
+	
+}
+function enviarMensaje()
+{
+	var asunto=$("#txt_asunto_contactanos").prop("value");
+	var email=$("#txt_email_contactanos").prop("value");
+	var mensaje=$("#txt_mensaje_contactanos").prop("value");
+	var exp = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+	if(asunto.length<=0 || email.length<=0 || mensaje.length<=0)
+	{
+		swal("Debes llenar todos los campos!!!");
+	}else{
+
+	if(!exp.test(email.trim()))
+	{
+		swal("Debes ingresar un email valido!!!");
+	}else{
+		$.post("control/enviar_mensaje.php",{
+			asunto:asunto,
+			email:email,
+			mensaje:mensaje
+		},function(data){
+			swal(data);
+			window.location="index.php";
+		});
+	}
+	}
+}
+function recargarLista()
+{
+	cargarPlatillos();
 }

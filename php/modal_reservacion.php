@@ -13,9 +13,9 @@ $datos=mysqli_query($conexion,$consulta);
         <h4 class="modal-title" id="myModalLabel">Ingrese los datos de su reservacion</h4>
       </div>
       <div class="modal-body">
-        <input type="text" id="id_cliente_reservacion" value="<?php echo $_SESSION['id_cliente']; ?>" hidden>
+        <input type="text" id="id_cliente_reservacion" value="<?php if(isset($_SESSION['id_cliente']))echo $_SESSION['id_cliente']; ?>" hidden>
         <label>Cliente</label>
-        <input type="text" class="form-control" value="<?php echo $_SESSION['nombre']; ?>" readonly>
+        <input type="text" class="form-control" value="<?php if(isset($_SESSION['nombre']))echo $_SESSION['nombre']; ?>" readonly>
         <label>Sucursal</label>
         <select class="form-control" id="txt_sucursal_reservacion" onchange="cargarMesas(this.value);">
           <?php 

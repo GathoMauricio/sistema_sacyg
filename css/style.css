@@ -3,6 +3,10 @@ body
 	background:url(../img/fondo_rojo.jpg);
 
 }
+iframe
+{
+	width: 100%;
+}
 #contenedor_menu
 {
 	width: 80%;
@@ -60,7 +64,23 @@ body
 	border-radius: 10px;
 }
 
+#contenedor_establecimientos
+{
+	width: 100%;
+	background: url(../img/negrodiv.jpg);
+	border-radius: 10px;
+	padding: 10px;
+	text-align: left;
+}
+#contenedor_contactanos
+{
+	width: 100%;
+	background: url(../img/negrodiv.jpg);
+	border-radius: 10px;
+	padding: 10px;
+	float: left;
 
+}
 
 
 /*Clases de Slider*/
@@ -134,4 +154,8 @@ body
 .social ul li a:hover{
 	padding: 10px 30px;
 	background: #000;
+}
+#facebook-session
+{
+	color: white;
 }

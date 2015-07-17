@@ -12,6 +12,7 @@
   <script type="text/javascript" src="js/responsiveslides.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/facebook.js"></script>
+  <script type="text/javascript" src="js/alert.js"></script>
   <script type="text/javascript" src="js/code.js"></script>
 
   <link rel="shortcut icon" href="img/favicon.ico" />
@@ -19,6 +20,7 @@
   <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/responsiveslides.css">
+  <link rel="stylesheet" type="text/css" href="css/alert.css">
   <link rel="stylesheet" type="text/css" href="css/font.css">
 
 </head>
@@ -91,6 +93,17 @@
   </div><!-- /.container-fluid -->
 </nav>
 </div>
+<?php 
+if(isset($_GET['activacion']))
+{
+  echo '<p class="bg-success">Genial!!! Tu cuenta ha sido activada con exito ya puedes iniciar sesion</p>';
+}
+if(isset($_GET['recuperacion']))
+{
+  echo '<p class="bg-success">Tus datos han sido actualizados!!!</p>';
+}
+ ?>
+
 <!-- Fin de la barra de menú-->
 <div id="contenedor_menu">
 </div>
@@ -115,7 +128,7 @@
     </div>
     <!--END Redes Sociales-->
 <div id="div_banner1" >
-<img src="img/logorestaurante1.png" style="width:100%;height:100%;">
+<img src="img/logorestaurante1.png" style="width:100%;height:250px;">
 </div> 
 <br> 
 <div id="contenedor_principal">

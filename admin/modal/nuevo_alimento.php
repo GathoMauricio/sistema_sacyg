@@ -33,7 +33,7 @@ $datos=mysqli_query($conexion,$consulta);
       </div>
       <div class="modal-body">
         <label>Precio</label>
-        <input type="text" class="form-control" id="txt_precio_alimento_nuevo"> 
+        <input type="text" class="form-control" onkeypress="soloNumeros();" maxlength="3" id="txt_precio_alimento_nuevo"> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

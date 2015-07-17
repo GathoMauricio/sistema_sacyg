@@ -51,13 +51,11 @@ $(function() {
   		FB.api('/me', function(response) {
         if(response.name.length > 0)
         {
-          /*$.post("php/comprobar_mail.php",{
-          email:response.email,
+          $.post("control/facebook.php",{
           nombre:response.name
           },function(data){
-          //alert(data);
-          //window.location="index.php";
-          });*/
+            
+          });
         }
         
 	  		$('#login').after(div_session);

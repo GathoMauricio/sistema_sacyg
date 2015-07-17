@@ -1,16 +1,24 @@
 $(document).ready(init);
+function soloNumeros() {
+ if ((event.keyCode < 48) || (event.keyCode > 57)) 
+  event.returnValue = false;
+}
 function init()
 {
+	$("#pestanas").tabs();
+
 	//LOAD AJAX
 	$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
 	$("#tabla_mesa").html("<center><img src='../img/load.gif' width='200'></center>");
 	$("#tabla_empleado").html("<center><img src='../img/load.gif' width='200'></center>");
 	$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
+	$("#tabla_categoria").html("<center><img src='../img/load.gif' width='200'></center>");
 	//Cargando tablas
 	$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 	$("#tabla_mesa").load("tabla/tabla_mesa.php");
 	$("#tabla_empleado").load("tabla/tabla_empleado.php");
 	$("#tabla_alimento").load("tabla/tabla_alimento.php");
+	$("#tabla_categoria").load("tabla/tabla_categoria.php");
 }
 
 //SUCURSAL
@@ -39,8 +47,10 @@ $.post("control/insert_sucursal.php",
 			
 		},
 		function(data){
-			alert(data);
+			//alert(data);
 			$("#modal_nueva_sucursal").modal("hide");
+			$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 		});
 }
 function deleteSucursal(id_sucursal)
@@ -52,13 +62,50 @@ function deleteSucursal(id_sucursal)
 				id_sucursal:id_sucursal
 			},
 			function(data){
-				alert(data);
+				//alert(data);
 				$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
 				$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
 			});
 	}	
 }
+function showUpdateSucursal(id_sucursal)
+{	//mandamos llamar a get_sucursal para q llene todo apartir del id
+	$.post("modal/get_sucursal.php",{id_sucursal:id_sucursal},function(data){
+		//ya q les puso valores llenamos el contenedor del body del modal
+		$("#contenedor_update_sucursal").html(data);
+		//ya podemos mostrar el modal
+		$("#modal_update_sucursal").modal();
+	});
 
+	
+}
+function updateSucursal()
+{
+var id_sucursal =$("#txt_id_sucursal_update").text();	
+var sucursal =$("#txt_nombre_sucursal_update").prop("value");
+var telefono =$("#txt_telefono_sucursal_update").prop("value");
+var calle_numero =$("#txt_calle_numero_sucursal_update").prop("value");
+var colonia =$("#txt_colonia_sucursal_update").prop("value");
+var delegacion =$("#txt_delegacion_sucursal_update").prop("value");
+var cp =$("#txt_cp_sucursal_update").prop("value");
+$.post("control/update_sucursal.php",
+		{
+			id_sucursal:id_sucursal,
+			sucursal:sucursal,
+			telefono:telefono,
+			calle_numero:calle_numero,
+			colonia:colonia,
+			delegacion:delegacion,
+			cp:cp
+			
+		},
+		function(data){
+			//alert(data);
+			$("#modal_update_sucursal").modal("hide");
+			$("#tabla_sucursal").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_sucursal").load("tabla/tabla_sucursal.php");
+		});
+}
 //MESA
 function showNuevaMesa()
 {
@@ -152,7 +199,112 @@ function deleteEmpleado(id_empleado)
 			});
 	}	
 }
+//CATEGORIA (tipo_alimento)
+function nuevaCategoria()
+{
+	$("#modal_nueva_categoria").modal();
+}
+function insertCategoria()
+{
+	var categoria=$("#txt_nueva_categoria").prop("value");
 
+	if(categoria.length<=0)
+	{
+		swal("Atencion!!!","Debes llenar todos los campos","error");
+	}else
+	{
+		$.post("control/insert_categoria.php",{categoria:categoria},function(data){
+			swal("Genial!!!",data,"success");
+			$("#modal_nueva_categoria").modal("hide");
+			$("#tabla_categoria").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_categoria").load("tabla/tabla_categoria.php");
+		});
+	}
+}
+function deleteCategoria(id)
+{
+	swal(
+		{title: '¿Realmente desea eliminar este registro?',
+		text: 'Este cambio ya no se podra deshacer en el futuro!!!',
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText:'Eliminar', 
+		closeOnConfirm: false }, 
+		function() { 
+			$.post("control/delete_categoria.php",{id:id},function(data){
+			swal( 'Eliminado','El registro ha sido eliminado!!!', 'success');
+			$("#tabla_categoria").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_categoria").load("tabla/tabla_categoria.php");
+			});
+			
+		});
+}
+//ALIMNETO
+function nuevoAlimento()
+{
+	$("#modal_nuevo_alimento").modal();
+}
+function insertAlimento()
+{
+	var tipo_alimento=$("#txt_alimento_tipo").prop("value");
+	var alimento=$("#txt_nombre_alimento_nuevo").prop("value");
+	var descripcion=$("#txt_descripcion_alimento_nuevo").prop("value");
+	var precio=$("#txt_precio_alimento_nuevo").prop("value");
+	if(alimento.length<=0 || descripcion.length<=0 || precio.length<=0)
+	{
+		swal("Atencion!!!","Todos los campos son obligatorios","error");
+	}else
+	{
+		$.post("control/insert_alimento.php",
+			{
+				tipo_alimento:tipo_alimento,
+				alimento:alimento,
+				descripcion:descripcion,
+				precio:precio
+			},function(data){
+			swal("Genial!!!",data,"success");
+			$("#modal_nuevo_alimento").modal("hide");
+			$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_alimento").load("tabla/tabla_alimento.php");
+
+			});
+	}
+}
+function showUpdateAlimento(id)
+{
+	$.post("modal/get_alimento.php",{id:id},function(data){
+		$("#contenedor_update_alimento").html(data);
+		$("#modal_actualizar_alimento").modal();
+	});
+}
+function updateAlimento(id)
+{
+	var id_alimento=$("#txt_id_update_alimento").prop("value");
+	var tipo_alimento=$("#txt_alimento_tipo_update").prop("value");
+	var alimento=$("#txt_nombre_alimento_update").prop("value");
+	var descripcion=$("#txt_descripcion_alimento_update").prop("value");
+	var precio=$("#txt_precio_alimento_update").prop("value");
+	if(alimento.length<=0 || descripcion.length<=0 || precio.length<=0)
+	{
+		swal("Atencion!!!","Todos los campos son obligatorios","error");
+	}else
+	{
+		$.post("control/update_alimento.php",
+			{
+				id_alimento:id_alimento,
+				tipo_alimento:tipo_alimento,
+				alimento:alimento,
+				descripcion:descripcion,
+				precio:precio
+			},function(data){
+			swal("Genial!!!","Registro actualizado","success");
+			$("#modal_actualizar_alimento").modal("hide");
+			$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_alimento").load("tabla/tabla_alimento.php");
+
+<<<<<<< HEAD
 /*ALIMENTO*/
 function nuevoAlimento()
 {
@@ -195,5 +347,30 @@ function deleteAlimento(id_alimento)
 			});
 	}	
 }
+=======
+			});
+	}
+>>>>>>> origin/master
 
 
+}
+function deleteAlimento(id)
+{
+	swal(
+		{title: '¿Realmente desea eliminar este registro?',
+		text: 'Este cambio ya no se podra deshacer en el futuro!!!',
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor:'#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText:'Eliminar', 
+		closeOnConfirm: false }, 
+		function() { 
+			$.post("control/delete_alimento.php",{id:id},function(data){
+			swal( 'Eliminado','El registro ha sido eliminado!!!', 'success');
+			$("#tabla_alimento").html("<center><img src='../img/load.gif' width='200'></center>");
+			$("#tabla_alimento").load("tabla/tabla_alimento.php");
+			});
+			
+		});
+}
