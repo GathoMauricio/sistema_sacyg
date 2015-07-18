@@ -25,7 +25,7 @@ iframe
 	text-align: left;
 	background: url(../img/negrodiv.jpg);
 	border-radius: 10px;
-	/*overflow: scroll;*/
+	overflow: scroll;
 }
 #div_orden
 {
